@@ -49,6 +49,29 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('No Handphone') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('no_handphone') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('no_handphone') ? ' is-invalid' : '' }}" name="no_handphone" id="input-no_handphone" type="text" placeholder="{{ __('No Handphone') }}" value="{{ old('no_handphone', auth()->user()->no_handphone) }}" required="true" aria-required="true"/>
+                      @if ($errors->has('name'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Status Hapus') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('status_hapus') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('status_hapus') ? ' is-invalid' : '' }}" name="status_hapus" id="input-status_hapus" type="text" placeholder="{{ __('Status Hapus') }}" value="{{ old('status_hapus', auth()->user()->status_hapus) }}" required="true" aria-required="true"/>
+                      @if ($errors->has('name'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>

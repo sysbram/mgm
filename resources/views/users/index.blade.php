@@ -40,6 +40,18 @@
                       <th>
                         {{ __('Creation date') }}
                       </th>
+                      <th>
+                        {{ __('No Handhphone') }}
+                      </th>
+                      <th>
+                        {{ __('Status Login') }}
+                      </th>
+                      <th>
+                        {{ __('Status Hapus') }}
+                      </th>
+                      <th>
+                        {{ __('Last Login') }}
+                      </th>
                       <th class="text-right">
                         {{ __('Actions') }}
                       </th>
@@ -55,6 +67,18 @@
                           </td>
                           <td>
                             {{ $user->created_at->format('Y-m-d') }}
+                          </td>
+                          <td>
+                            {{ $user->no_handphone }}
+                          </td>
+                          <td>
+                            {{ $user->status_login }}
+                          </td>
+                          <td>
+                            {{ $user->status_hapus }}
+                          </td>
+                          <td>
+                            {{ $user->last_login }}
                           </td>
                           <td class="td-actions text-right">
                             @if ($user->id != auth()->id())

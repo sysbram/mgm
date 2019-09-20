@@ -17,6 +17,11 @@
 
 //Route Image
 
+//Route Back Office
+Route::get('/back_office','BackOfficeController@index');
+Route::post('/back_office/update','BackOfficeController@update');
+Route::post('/back_office/delete','BackOfficeController@delete');
+
 //Route Member
 Route::get('/member','MemberController@index');
 Route::get('/member/edit/{uid}','MemberController@edit');
