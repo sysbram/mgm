@@ -15,8 +15,6 @@
 //     return view('welcome');
 // });
 
-//Route Image
-
 //Route Back Office
 Route::get('/back_office','BackOfficeController@index');
 Route::post('/back_office/update','BackOfficeController@update');
