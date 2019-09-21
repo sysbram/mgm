@@ -13,14 +13,14 @@
                         <div class="card-body">
                             <div class="table-responsive">
                             <table class="table">
-                                <thead class=" text-primary">
+                                <thead class=" text-primary text-center">
                                 <th scope="col">#</th>
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Created At</th>
                                 <th>No Handphone</th>
                                 <th>Status Login</th>
-                                <th class="text-center">Status Aktif</th>
+                                <th>Status Aktif</th>
                                 <th>Last Login</th>
                                 <!-- <th>No Handphone</th> -->
                                 <!-- <th class="text-center">Status Hapus</th>
@@ -32,19 +32,23 @@
                                 <tbody>
                                     <?php $no = 1; ?>
                                     @foreach($bo as $user_bo)
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>{{ $no.'.'}}
-                                        <td>{{ $user_bo->name }}</td>
-                                        <td>{{ $user_bo->email }}</td>
+                                        <td class="text-left">{{ $user_bo->name }}</td>
+                                        <td class="text-left">{{ $user_bo->email }}</td>
                                         <td>{{ $user_bo->created_at }}</td>
                                         <td>{{ $user_bo->no_handphone }}</td>
-                                        <td>{{ $user_bo->status_login }}</td>
-                                        @if($user_bo->status_hapus == 'N')
-                                            <td class="text-center">Aktif</td>
+                                        @if($user_bo->status_login == 1)
+                                            <td class="text-center text-success">Sedang Login</td>
                                         @else
-                                            <td class="text-center">Tidak Aktif</td>
+                                            <td class="text-center text-danger">Tidak Aktif</td>
                                         @endif
-                                        <td>{{ $user_bo->last_login }}</td>
+                                        @if($user_bo->status_hapus == 'N')
+                                            <td class="text-center text-success">Aktif</td>
+                                        @else
+                                            <td class="text-center text-danger">Tidak Aktif</td>
+                                        @endif
+                                        <td class="text-center">{{ $user_bo->last_login }}</td>
                                         <td>
                                             <a href="/member/profil/{{ $user_bo->id }}"><i class=" fa fa-eye"></i></a>
                                             <a href="#" data-toggle="modal" data-target="#exampleModal"><i class=" fa fa-edit"></i></a>
@@ -54,6 +58,11 @@
 
                                     <?php $no++; ?>
                                     @endforeach
+                                    <?php 
+
+$mytime = Carbon\Carbon::now('Asia/Jakarta');
+echo $mytime->toDateTimeString();
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

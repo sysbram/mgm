@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use \Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class LogSuccessfulLogin
 {
@@ -26,9 +27,11 @@ class LogSuccessfulLogin
      * @return void
      */
     public function handle(Login $event)
-    {
+    {       
+        $mytime = Carbon::now('Asia/Jakarta');
+        
         $user = $event->user;
-        $user->last_login = date('Y-m-d H:i:s');
+        $user->last_login = $mytime->toDateTimeString();
         $user->status_login = 1;
         $user->save();
     }
