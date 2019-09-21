@@ -58,11 +58,6 @@
 
                                     <?php $no++; ?>
                                     @endforeach
-                                    <?php 
-
-$mytime = Carbon\Carbon::now('Asia/Jakarta');
-echo $mytime->toDateTimeString();
-                                    ?>
                                 </tbody>
                             </table>
                         </div>
