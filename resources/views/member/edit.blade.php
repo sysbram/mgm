@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['activePage' => 'member', 'titlePage' => __('Member List')])
 
 @section('content')
 <div class="container">
@@ -57,8 +57,12 @@
                             <input type="number" name="no_handphone" class="form-control" id="no_handphone" value="{{ $member->no_handphone }}">
                         </div>
                         <div class="form-group">
+                            <label for="referral_code_parent">Referral Code Parent</label>
+                            <input type="text" name="referral_code_parent" class="form-control" id="referral_code_parent" value="{{ $member->referral_code_parent }}">
+                        </div>
+                        <div class="form-group">
                             <label for="status_hapus">Status Hapus</label>
-                            <input type="number" name="status_hapus" class="form-control" id="status_hapus" value="{{ $member->status_hapus }}">
+                            <input type="text" name="status_hapus" class="form-control" id="status_hapus" value="{{ $member->status_hapus }}">
                         </div>
                         <!-- <div class="form-group">
                             <label for="exampleInputFile">File input</label>
@@ -84,5 +88,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

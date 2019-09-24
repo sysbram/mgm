@@ -19,8 +19,11 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>No Handphone</th>
-                    <th class="text-center">Status Hapus</th>
-                    <th>Last Login</th>
+                    <th>Ref Code</th>
+                    <th>Ref Code Parent</th>
+
+                    <!-- <th class="text-center">Status Hapus</th> -->
+                    <!-- <th>Last Login</th> -->
                     <th>Action</th>
                     </thead>
                     <tbody>
@@ -32,8 +35,10 @@
                         <td>{{ $data_member->nama }}</td>
                         <td>{{ $data_member->email }}</td>
                         <td>{{ $data_member->no_handphone }}</td>
+                        <td>{{ $data_member->referral_code }}</td>
+                        <td>{{ $data_member->referral_code_parent }}</td>
 
-                        @if($data_member->status_hapus == 'N')
+                        <!-- @if($data_member->status_hapus == 'N')
                         <td class="text-center">Aktif</td>
                         @else
                         <td class="text-center">Tidak Aktif</td>
@@ -43,7 +48,7 @@
                         <td class="text-center">-</td>
                         @else
                         <td>{{ $data_member->last_login }}</td>
-                        @endif
+                        @endif -->
                         <td>
                             <a href="/member/profil/{{ $data_member->uid }}"><i class=" fa fa-eye"></i></a>
                             <a href="#" data-toggle="modal" data-target="#exampleModal"><i class=" fa fa-edit"></i></a>
@@ -93,8 +98,7 @@
             <div class="form-group">
                 <label for="no_handphone">No Handphone</label>
                 <input type="number" name="no_handphone" class="form-control" id="no_handphone" value="{{ $data_member->no_handphone }}">
-            </div>
-            <div class="form-group">
+            </div>    <div class="form-group">
                 <label for="status_hapus">Status Hapus</label>
                 <?= Form::select('status_hapus',  array('N' => 'Aktif', '1' => 'Tidak Aktif'), null, ['class' => 'form-control']); ?>
             </div>
