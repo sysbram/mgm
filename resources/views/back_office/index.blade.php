@@ -1,138 +1,118 @@
 @extends('layouts.app', ['activePage' => 'back_office', 'titlePage' => __('Member List')])
 
 @section('content')
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Member Table</h4>
-                        <p class="card-category"> Here you can mamage members</p>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                @if(session('success'))
+                    <div class="alert alert-success my-4">
+                        {{session('success')}}
                     </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary text-center">
-                                <th scope="col">#</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Created At</th>
-                                <th>No Handphone</th>
-                                <th>Status Login</th>
-                                <th>Status Aktif</th>
-                                <th>Last Login</th>
-                                <!-- <th>No Handphone</th> -->
-                                <!-- <th class="text-center">Status Hapus</th>
-                                <th class="text-center">Status Login</th>
-                                <th class="text-center">Last Login</th> -->
-                                <th>Action</th>
-                                </thead>
+                @endif
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Member Table</h4>
+                            <p class="card-category"> Here you can manage your member</p>
+                            <button class="btn btn-warning float-right" data-toggle="modal" data-target="#addMemberModal">Add new admin</button>
+                        </div>
+                            <div class="card-body">
+                                <div class="table-responsive table-hover">
+                                <table class="table">
+                                    <thead class=" text-primary text-center">
+                                    <th scope="col">#</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Created At</th>
+                                    <th>No Handphone</th>
+                                    <th>Status Login</th>
+                                    <th>Last Login</th>
+                                    <!-- <th>No Handphone</th> -->
+                                    <!-- <th class="text-center">Status Hapus</th>
+                                    <th class="text-center">Status Login</th>
+                                    <th class="text-center">Last Login</th> -->
+                                    <th>Action</th>
+                                    </thead>
 
-                                <tbody>
-                                    <?php $no = 1; ?>
-                                    @foreach($bo as $user_bo)
-                                    <tr class="text-center">
-                                        <td>{{ $no.'.'}}
-                                        <td class="text-left">{{ $user_bo->name }}</td>
-                                        <td class="text-left">{{ $user_bo->email }}</td>
-                                        <td>{{ $user_bo->created_at }}</td>
-                                        <td>{{ $user_bo->no_handphone }}</td>
-                                        @if($user_bo->status_login == 1)
+                                    <tbody>
+                                    @foreach($admin as $data)                                    
+                                        <tr class="text-center" style="cursor:pointer">
+                                            <td>
+                                            <td class="text-left"><a href="/{{$data->id}}/profile">{{ $data->name }}</a></td>
+                                            <td class="text-left">{{ $data->email }}</td>
+                                            <td>{{ $data->created_at }}</td>
+                                            <td>{{ $data->no_hp }}</td>
                                             <td class="text-center text-success">Sedang Login</td>
-                                        @else
-                                            <td class="text-center text-danger">Tidak Aktif</td>
-                                        @endif
-                                        @if($user_bo->status_hapus == 'N')
-                                            <td class="text-center text-success">Aktif</td>
-                                        @else
-                                            <td class="text-center text-danger">Tidak Aktif</td>
-                                        @endif
-                                        <td class="text-center">{{ $user_bo->last_login }}</td>
-                                        <td>
-                                            <a href="/member/profil/{{ $user_bo->id }}"><i class=" fa fa-eye"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#exampleModal"><i class=" fa fa-edit"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#exampleModalDelete"><i class=" fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-
-                                    <?php $no++; ?>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                            <td class="text-center">{{ __('last_login') }}</td>
+                                            <td>
+                                                <a href="/back_office/{{$data->id}}/delete"><i class=" fa fa-trash"></i></a></a>
+                                                <!-- <a href=""><i class=" fa fa-eye"></i></a>
+                                                <a href="#" data-toggle="modal" data-target="#exampleModal"><i class=" fa fa-edit"></i></a> -->
+                                                <!-- <a href="" data-toggle="modal" data-target="#exampleModalDelete"><i class=" fa fa-trash"></i></a> -->
+                                            </td>
+                                        </tr>  
+                                    @endforeach                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
+
+
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
+    <div class="modal fade" id="addMemberModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
     <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Profil</h5>
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new admin</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
         </button>
-    </div>
-    <div class="modal-body">
-    <form role="form" action="/back_office/update" method="post">
-        {{ csrf_field() }}
-        <div class="card-body">
-                <input type="hidden" name="id" value="{{ $user_bo->id}} "><br/>
-            <div class="form-group">
-                <label for="name">Username</label>
-                <input type="text" name="name" class="form-control" id="name" value="{{ $user_bo->name }}">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" name="email" class="form-control" id="email" value="{{ $user_bo->email }}">
-            </div>
-            <div class="form-group">
-                <label for="no_handphone">No Handphone</label>
-                <input type="text" name="no_handphone" class="form-control" id="no_handphone" value="{{ $user_bo->no_handphone }}">
-            </div>
-            <div class="form-group">
-                <label for="status_hapus">Status Hapus</label>
-                <?= Form::select('status_hapus',  array('N' => 'Aktif', '1' => 'Tidak Aktif'), null, ['class' => 'form-control']); ?>
-            </div>
         </div>
-    </div>
-    
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-    </div>
-    
-    </form>
-    </div>
-</div>
-</div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <div class="modal-body">
+            <form action="/register" method="post">
+            {{csrf_field()}}
+                <div class="form-group">
+                    <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
+                </div>                
+                <div class="form-group">
+                    <input name="email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password">
+                </div>
+                <div class="form-group">
+                    <input name="phone_number" type="number" class="form-control" id="formGroupExampleInput2" placeholder="Phone Number">
+                </div>
 
-<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelDelete" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        Apakah anda yakin ingin menghapus member ini ?
-    </div>
-    <form role="form" action="/back_office/delete" method="post">
-    {{ csrf_field() }}
-        <div class="modal-footer">
-        <input type="hidden" name="id" value="{{ $user_bo->id}} "><br/>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-        <button type="submit" class="btn btn-primary">YES</button>
+                <select class="custom-select my-4" name="occupation">
+                    <option selected>Ocupation</option>
+                    <option value="MANAGER">Manager</option>
+                    <option value="BRANCH MANAGER">Branch Manager</option>
+                    <option value="STAFF">Staff</option>
+                </select>
+                <button type="submit" class="btn btn-primary float-right">Agree to add</button>
+            </form>
         </div>
-    </form>
+        
     </div>
-</div>
-</div>
-@endsection
+    </div>
+    </div>
