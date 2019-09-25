@@ -29,12 +29,12 @@
                     <?php $count++ ?>
                 @endforeach
 
-                <?php for($i=$count; $i<=3; $i++): ?>
+                @for($i=$count; $i<=3; $i++)
                     <div class="col-md-4 text-center" style="font-size:15px">
                         <i class=" fa fa-user fa-5x" style="color:grey"></i><br/>
                     </div>
                 
-                <?php endfor ?>
+                @endfor
             </div>
 
             <div class="row">
@@ -51,12 +51,12 @@
                                 </div>
                         <?php $count++ ?>
                         @endforeach
-                            <?php for($i=$count; $i<=3; $i++): ?>
+                            @for ($i=$count; $i<=3; $i++)
                                 <div class="col-md-4 text-center" style="font-size:10px;">
                                     <i class=" fa fa-user fa-5x" style="color:grey"></i><br/>
                                 </div>
                             
-                            <?php endfor ?>
+                            @endfor
                         </div>
                 </div>
                 @endforeach

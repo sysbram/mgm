@@ -25,8 +25,8 @@ class MemberController extends Controller
             'nama'          => $request->nama,
             'email'         => $request->email,
             'no_handphone'  => $request->no_handphone,
-            'referral_code_parent'  => $request->referral_code_parent,
             'status_hapus'  => $request->status_hapus,
+            // 'referral_code_parent'  => $request->referral_code_parent,
         ]);
 
         
