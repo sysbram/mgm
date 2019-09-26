@@ -15,7 +15,7 @@ class CreateMember extends Migration
     {
         Schema::create('member', function (Blueprint $table) {
             $table->uuid('uid');
-            $table->string('nik', 20)->nullable();
+            $table->string('nik', 20);
             $table->string('password', 100);
             $table->char('nama');
             $table->char('email');

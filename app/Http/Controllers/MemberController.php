@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Spatie\Activitylog\Models\Activity;
 
 class MemberController extends Controller
 {
     public function index(){
-        $member = DB::table('member')->orderBy('uid')->get();
+        $member = member::orderBy('uid')->get();
 
         return view('member/index',['member' => $member]);
     }
@@ -19,18 +23,25 @@ class MemberController extends Controller
         return view('member/edit',['member' => $member]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $uid){
         DB::table('member')->where('uid',$request->uid)->update([
             'nik'           => $request->nik,
             'nama'          => $request->nama,
             'email'         => $request->email,
             'no_handphone'  => $request->no_handphone,
             'status_hapus'  => $request->status_hapus,
-            // 'referral_code_parent'  => $request->referral_code_parent,
         ]);
 
-        
+        $mytime = Carbon::now('Asia/Jakarta');
 
+        $nama_member = DB::table('member')->where('uid', $uid)->first();
+
+        DB::table('users_log_activity')->insert([
+            'id_users'      => Auth::user()->id,
+            'uid_member'    => $uid,
+            'waktu_proses'  => $mytime->toDateTimeString(),
+            'route'         => 'Update',
+        ]);
         return redirect('/member');
     }
 
@@ -38,7 +49,15 @@ class MemberController extends Controller
         DB::table('member')->where('uid',$request->uid)->update([
             'status_hapus'  => 1,
         ]);
-            // echo "ad";
+        
+        $mytime = Carbon::now('Asia/Jakarta');
+
+        DB::table('users_log_activity')->insert([
+            'id_users'      => Auth::user()->id,
+            'uid_member'    => $uid,
+            'waktu_proses'  => $mytime->toDateTimeString(),
+            'route'         => 'Delete',
+        ]);
         return redirect('/member');
     }
 
@@ -72,18 +91,6 @@ class MemberController extends Controller
                 $member_grandchild[$i] = [];
             }   
         }
-        // for ($i=0; $i<=count($member_grandchild); $i++){
-        //     if(count($member_grandchild[$i]) == 0){
-        //         unset($member_grandchild[$i]);
-        //     }
-        // }
-        // echo "<pre>";
-        // // echo $member_parent->referral_code;
-
-        // // echo "\n";
-        // // print_r($member_child);
-        // print_r($member_grandchild);
-        // die;
 
         return view('member/profil',[
             'member_parent'     => $member_parent, 

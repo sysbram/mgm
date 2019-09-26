@@ -20,11 +20,13 @@ Route::get('/back_office','BackOfficeController@index');
 Route::post('/back_office/update','BackOfficeController@update');
 Route::post('/back_office/delete','BackOfficeController@delete');
 
+//Route Log Back Office
+Route::get('/log_bo','LogBOController@index');
+
 //Route Member
 Route::get('/member','MemberController@index');
-Route::get('/member/edit/{uid}','MemberController@edit');
 Route::get('/member/profil/{uid}','MemberController@profil');
-Route::post('/member/update','MemberController@update');
+Route::put('/member/update/{uid}','MemberController@update');
 Route::post('/member/delete','MemberController@delete');
 
 Auth::routes();
@@ -52,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('map', function () {
 		return view('pages.map');
 	})->name('map');
-
+	
 	Route::get('notifications', function () {
 		return view('pages.notifications');
 	})->name('notifications');

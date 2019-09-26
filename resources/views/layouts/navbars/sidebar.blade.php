@@ -54,14 +54,14 @@
             </a>
             </li>
             <li class="nav-item{{ $activePage == 'log_bo' ? ' active' : '' }}">
-            <a class="nav-link" href="/member">
+            <a class="nav-link" href="/log_bo">
                 <i class="material-icons">assignment</i>
                 <p>{{ __('Log Back Office') }}</p>
             </a>
             </li>
             <li class="nav-item{{ $activePage == 'log_member' ? ' active' : '' }}">
             <a class="nav-link" href="/member">
-                <i class="material-icons">receipt</i>
+                <i class="material-icons">assignment</i>
                 <p>{{ __('Log Activity Member') }}</p>
             </a>
             </li>

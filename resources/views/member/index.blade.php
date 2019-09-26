@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Member Table</h4>
+                <h4 class="card-title ">Member </h4>
                 <p class="card-category"> Here you can manage members</p>
             </div>
             <div class="card-body">
@@ -75,8 +75,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                            <form role="form" action="/member/update" method="post">
+                            <form role="form" action="/member/update/{{ $data_member->uid }}" method="post">
+
                                 {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+
                                 <div class="card-body">
                                         <input type="hidden" name="uid" value="{{ $data_member->uid }} "><br/>
                                     <div class="form-group">
