@@ -15,10 +15,13 @@
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link href ="{{ asset('css/custom.css') }}" rel="stylesheet"/>
+
+    <!-- My Own ajax -->
+    <script src="{{ asset('material') }}/js/rianajax.js"></script>
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="" method="POST" style="display: none;">
                 @csrf
             </form>
             @include('layouts.page_templates.auth')
@@ -72,7 +75,6 @@
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="{{ asset('material') }}/demo/demo.js"></script>
         <script src="{{ asset('material') }}/js/settings.js"></script>
-        <script src="{{ asset('material') }}/js/rianajax.js"></script>
         @stack('js')
     </body>
 </html>

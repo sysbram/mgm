@@ -1,1 +1,112 @@
-.profile-img{width:100px; height: 100px;}
+.y100{width:100px; height:100px;}
+
+/* radius */
+
+.radius100{border-radius: 100%; overflow: hidden}
+
+body{overflow-x: hidden;}
+.primary-bg{background: #DC143C;}
+
+
+
+/*Height*/
+.height-auto{height: auto;}
+.height-screen{height: calc(100vh);}
+.height100{height: 100%;}
+.height90{height: 90%;}
+
+/*Width*/
+.width100{width: 100%;}
+.width90{width: 90%;}
+
+/*Padding*/
+.p5{padding: 5px;}
+.p10{padding: 10px;}
+
+/*Margin*/
+.m-auto{margin: auto;}
+.ml5-{margin-left: -5px;}
+.ml7-{margin-left: -7px;}
+
+/*Box*/
+.box100{width:100%; height: auto; }
+.box90{width: 90%; height: auto;}
+
+/*Border Radius*/
+.rounded-bottom{border-bottom-left-radius: 100%;}
+
+/*Visiblity*/
+.none{display: none;}
+.op-5{opacity: 0.5;}
+
+/*Font Size*/
+	.fs1{font-size: 1px;}
+	.fs2{font-size: 2px;}
+	.fs3{font-size: 3px;}
+	.fs4{font-size: 4px;}
+	.fs5{font-size: 5px;}
+	.fs6{font-size: 6px;}
+	.fs7{font-size: 7px;}
+	.fs8{font-size: 8px;}
+	.fs9{font-size: 9px;}
+	.fs10{font-size: 10px;}
+	.fs11{font-size: 11px;}
+	.fs12{font-size: 12px;}
+	.fs13{font-size: 13px;}
+	.fs14{font-size: 14px;}
+	.fs15{font-size: 15px;}
+	.fs16{font-size: 16px;}
+	.fs17{font-size: 17px;}
+	.fs18{font-size: 18px;}
+	.fs19{font-size: 19px;}
+	.fs20{font-size: 20px;}
+	.fs21{font-size: 21px;}
+	.fs22{font-size: 22px;}
+	.fs23{font-size: 23px;}
+	.fs24{font-size: 24px;}
+	.fs25{font-size: 25px;}
+	.fs26{font-size: 26px;}
+	.fs27{font-size: 27px;}
+	.fs28{font-size: 28px;}
+	.fs29{font-size: 29px;}
+	.fs30{font-size: 30px;}
+
+
+	.fs31{font-size: 31px;}
+	.fs32{font-size: 32px;}
+	.fs33{font-size: 33px;}
+	.fs34{font-size: 34px;}
+	.fs35{font-size: 35px;}
+	.fs36{font-size: 36px;}
+	.fs37{font-size: 37px;}
+	.fs38{font-size: 38px;}
+	.fs39{font-size: 39px;}
+	.fs40{font-size: 40px;}
+	.fs41{font-size: 41px;}
+	.fs42{font-size: 42px;}
+	.fs43{font-size: 43px;}
+	.fs44{font-size: 44px;}
+	.fs45{font-size: 45px;}
+	.fs46{font-size: 46px;}
+	.fs47{font-size: 47px;}
+	.fs48{font-size: 48px;}
+	.fs49{font-size: 49px;}
+	.fs50{font-size: 50px;}
+
+/*Font Color*/
+	.white{color: #fff;}
+	.blue{color: blue;}
+	.yellow{color: yellow;}
+	.red{color: red;}
+	.green{color: green;}
+	.grey{color: grey;}
+
+/*Font Style*/
+	.italic{font-style: italic;}
+	.underline{text-decoration: underline;}
+	.decoration-none{text-decoration: none;}
+	.bold{font-weight: bold;}
+    .normal{font-weight: normal;}
+    
+/* Cursor */
+    .pointer{cursor: pointer;}

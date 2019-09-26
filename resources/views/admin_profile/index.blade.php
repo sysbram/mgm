@@ -51,25 +51,11 @@
                             </div>
                         </div>
                     </div> -->
-
-                    <div class="card card-profile">
-                        <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="https://image.shutterstock.com/image-vector/november-17-2017-vector-illustration-260nw-756988828.jpg">
-                        </a>
-                        </div>
-                        <div class="card-body">
-                        <h6 class="card-category text-gray">{{$admin->occupation}}</h6>
-                        <h4 class="card-title">{{$admin->name}}</h4>
-                        <p class="card-description">
-                            @if(isset($admin->description))
-                                {{$admin->description}}
-                            @else
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae earum voluptatum reprehenderit!
-                            @endif
-                        </p>
-                        <a href="#pablo" class="btn btn-primary btn-round" data-toggle="modal" data-target="#addMemberModal">Edit</a>
-                        </div>
+                    <div class="card card-profile" id="adminProfile">
+                        <!-- Ajax load for editing profile -->
+                            <script>
+                                load("{{url('/')}}"+"/{{$admin->id}}/partAdminProfile","adminProfile");
+                            </script>
                     </div>
                 </div>
 

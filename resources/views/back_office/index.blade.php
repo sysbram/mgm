@@ -42,8 +42,8 @@
                                             <td class="text-left">{{ $data->email }}</td>
                                             <td>{{ $data->created_at }}</td>
                                             <td>{{ $data->no_hp }}</td>
-                                            <td class="text-center text-success">Sedang Login</td>
-                                            <td class="text-center">{{ __('last_login') }}</td>
+                                            <td class="text-center text-success">@if($data->status_login == 1) Online @else Offline @endif</td>
+                                            <td class="text-center">{{$data->last_login}}</td>
                                             <td>
                                                 <a href="/back_office/{{$data->id}}/delete"><i class=" fa fa-trash"></i></a></a>
                                                 <!-- <a href=""><i class=" fa fa-eye"></i></a>

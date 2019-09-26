@@ -5,7 +5,7 @@ function load(link,place){
 		if(xhr.readyState == 4 && xhr.status == 200){
 			place.innerHTML = xhr.responseText;
 		}else{
-			place.innerHTML = "";
+			place.innerHTML = "Loading...";
 		}
 	}
 
@@ -14,6 +14,3 @@ function load(link,place){
 }
 
 
-function hi(){
-    alert('success');
-}

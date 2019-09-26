@@ -13,16 +13,9 @@ class AdminController extends Controller
         $admin = User::find($id);
         return view('admin_profile/index',['admin'=>$admin]);
     }
+    
 
-    public function edit(Request $request, $id){
-        $admin = User::find($id);
-        $admin->name = $request->name;
-        $admin->no_hp = $request->no_hp;
-        $admin->description = $request->description;
-        $admin->occupation = $request->occupation;
-        $admin->save();
-        return redirect('/'.$id.'/profile')->with('success',$admin->name . ' is edited');
-    }
+    
 
     public function postRegister(Request $request){
 

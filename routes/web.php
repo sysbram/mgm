@@ -1,41 +1,232 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Route Login
+Route::get('/login','AuthController@login');
+Route::post('/login','AuthController@postLogin')->name('login');
+Route::get('/logout', 'AuthController@logout');
 
-//Route Back Office
-Route::get('/back_office','BackOfficeController@index');
-Route::post('/back_office/update','BackOfficeController@update');
-Route::post('/back_office/delete','BackOfficeController@delete');
 
-//Route Member
-Route::get('/member','MemberController@index');
-Route::get('/member/edit/{uid}','MemberController@edit');
-Route::get('/member/profil/{uid}','MemberController@profil');
-Route::post('/member/update','MemberController@update');
-Route::post('/member/delete','MemberController@delete');
+Route::group(['middleware' => 'auth'], function () {
 
-Auth::routes();
+    //Route Back Office
+    Route::get('/back_office','BackOfficeController@index');
+    Route::post('/back_office/update','BackOfficeController@update');
+    Route::post('/back_office/delete','BackOfficeController@delete');
+    //Route Member
+    Route::get('/member','MemberController@index');
+    Route::get('/member/edit/{uid}','MemberController@edit');
+    Route::get('/member/profil/{uid}','MemberController@profil');
+    Route::post('/member/update','MemberController@update');
+    Route::post('/member/delete','MemberController@delete');
+    // Auth::routes();
+    // Untuk auth register superadmin
+    Route::post('/register', 'AdminController@postRegister');
+    // Manage admins
+    Route::get('/back_office/{id}/delete', 'AdminController@delete');
+    Route::get('/{id}/profile','AdminController@profile');
+    Route::post('/{id}/edit','AdminEditController@edit');
+    // Routing for load Page's part through ajax
+    Route::get('/{id}/partAdminProfile', 'AdminEditController@profileLoad');
+    Route::get('/{id}/partAdminProfileEdit', 'AdminEditController@profileEditLoad');
 
-// Untuk auth register superadmin
-Route::post('/register', 'AdminController@postRegister');
+});
 
-// Manage admins
-Route::get('/back_office/{id}/delete', 'AdminController@delete');
-Route::get('/{id}/profile','AdminController@profile');
-Route::post('/{id}/edit','AdminController@edit');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 // Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
