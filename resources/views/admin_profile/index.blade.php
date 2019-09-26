@@ -156,6 +156,13 @@
                     <textarea name="description" class="form-control " id="validationTextarea" placeholder="Your description here" value="{{$admin->description}}" required></textarea>
                 </div>
 
+                <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                </div>
+                </div>
+
                 <select class="custom-select my-4" name="occupation">
                     <option selected>Ocupation</option>
                     <option value="MANAGER">Manager</option>
