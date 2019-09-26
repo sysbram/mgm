@@ -17,40 +17,10 @@
                 <p>{{ __('Dashboard') }}</p>
             </a>
             </li>
-            <!-- <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-                <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-                <p>{{ __('Laravel Examples') }}
-                    <b class="caret"></b>
-                </p>
-                </a>
-                <div class="collapse show" id="laravelExample">
-                <ul class="nav">
-                    <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <span class="sidebar-mini"> UP </span>
-                        <span class="sidebar-normal">{{ __('User profile') }} </span>
-                    </a>
-                    </li>
-                    <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <span class="sidebar-mini"> UM </span>
-                        <span class="sidebar-normal"> {{ __('User Management') }} </span>
-                    </a>
-                    </li>
-                </ul>
-                </div>
-            </li> -->
-            <li class="nav-item{{ $activePage == 'back_office' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
             <a class="nav-link" href="/back_office">
                 <i class="material-icons">accessibility</i>
                 <p>{{ __('Back Office') }}</p>
-            </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
-            <a class="nav-link" href="/member">
-                <i class="material-icons">face</i>
-                <p>{{ __('Member') }}</p>
             </a>
             </li>
             <li class="nav-item{{ $activePage == 'log_bo' ? ' active' : '' }}">
@@ -59,18 +29,12 @@
                 <p>{{ __('Log Back Office') }}</p>
             </a>
             </li>
-            <li class="nav-item{{ $activePage == 'log_member' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
             <a class="nav-link" href="/member">
                 <i class="material-icons">assignment</i>
                 <p>{{ __('Log Activity Member') }}</p>
             </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-            <a class="nav-link" href="{{ route('icons') }}">
-                <i class="material-icons">bubble_chart</i>
-                <p>{{ __('Icons') }}</p>
-            </a>
-            </li>
+            </li>>
         </ul>
     </div>
 </div>
