@@ -17,10 +17,16 @@
                 <p>{{ __('Dashboard') }}</p>
             </a>
             </li>
-            <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'back_office' ? ' active' : '' }}">
             <a class="nav-link" href="/back_office">
                 <i class="material-icons">accessibility</i>
                 <p>{{ __('Back Office') }}</p>
+            </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
+            <a class="nav-link" href="/member">
+                <i class="material-icons">face</i>
+                <p>{{ __('Member') }}</p>
             </a>
             </li>
             <li class="nav-item{{ $activePage == 'log_bo' ? ' active' : '' }}">
@@ -29,12 +35,6 @@
                 <p>{{ __('Log Back Office') }}</p>
             </a>
             </li>
-            <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
-            <a class="nav-link" href="/member">
-                <i class="material-icons">assignment</i>
-                <p>{{ __('Log Activity Member') }}</p>
-            </a>
-            </li>>
         </ul>
     </div>
 </div>

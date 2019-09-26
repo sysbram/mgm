@@ -25,7 +25,7 @@
                             <td> {{ $no++.'.'}} </td>
                             <td> {{ $bo->waktu_proses }} </td>
                             <td> {{ 'Member ' }}
-                                <span class="font-weight-bold text-lg"> {{ $bo->uid_member }} </span>       
+                                <span class="font-weight-bold text-lg"> {{ $bo->nama }} </span>       
                                 {{ 'telah di ' }}                            
                                 <span class="text-danger">{{ $bo->route }}</span>
                                 {{ 'oleh Admin ' }}

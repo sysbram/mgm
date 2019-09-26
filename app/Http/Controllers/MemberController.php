@@ -45,7 +45,7 @@ class MemberController extends Controller
         return redirect('/member');
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request, $uid){
         DB::table('member')->where('uid',$request->uid)->update([
             'status_hapus'  => 1,
         ]);

@@ -6,6 +6,8 @@ Route::get('/login','AuthController@login');
 Route::post('/login','AuthController@postLogin')->name('login');
 Route::get('/logout', 'AuthController@logout');
 
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -15,10 +17,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/back_office/delete','BackOfficeController@delete');
     //Route Member
     Route::get('/member','MemberController@index');
-    Route::get('/member/edit/{uid}','MemberController@edit');
     Route::get('/member/profil/{uid}','MemberController@profil');
-    Route::post('/member/update','MemberController@update');
-    Route::post('/member/delete','MemberController@delete');
+    Route::put('/member/update/{uid}','MemberController@update');
+    Route::post('/member/delete/{uid}','MemberController@delete');
+    //Route Log Admin Activity
+    Route::get('/log_bo','LogBOController@index');
     // Auth::routes();
     // Untuk auth register superadmin
     Route::post('/register', 'AdminController@postRegister');

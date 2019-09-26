@@ -98,14 +98,6 @@
                                         <label for="no_handphone">No Handphone</label>
                                         <input type="number" name="no_handphone" class="form-control" id="no_handphone" value="{{ $data_member->no_handphone }}">
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label for="referral_code">Referral Code</label>
-                                        <input type="referral_code" name="referral_code" class="form-control" id="referral_code" value="{{ $data_member->referral_code }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="referral_code_parent">Referral Code Parent</label>
-                                        <input type="referral_code_parent" name="referral_code_parent" class="form-control" id="referral_code_parent" value="{{ $data_member->referral_code_parent }}">
-                                    </div>     -->
                                     <div class="form-group">
                                         <label for="status_hapus">Status Hapus</label>
                                         <?= Form::select('status_hapus',  array('N' => 'Aktif', '1' => 'Tidak Aktif'), null, ['class' => 'form-control']); ?>
@@ -135,7 +127,7 @@
                                 <div class="modal-body text-danger">
                                     Apakah anda yakin ingin menghapus member <span class="font-weight-bold" style="font-size:16px; color:black">{{ $data_member->nama }}</span>  ?
                                 </div>
-                                <form role="form" action="/member/delete" method="post">
+                                <form role="form" action="/member/delete/{{ $data_member->uid }}" method="post">
                                 {{ csrf_field() }}
                                     <div class="modal-footer">
                                         <input type="hidden" name="uid" value="{{ $data_member->uid}} "><br/>
