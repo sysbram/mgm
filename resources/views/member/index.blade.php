@@ -38,7 +38,7 @@
                         <!-- <td>{{ $data_member->referral_code }}</td>
                         <td>{{ $data_member->referral_code_parent }}</td> -->
 
-                        @if($data_member->status_hapus == 'N')
+                        @if($data_member->status_hapus == "N")
                         <td class="text-center">Aktif</td>
                         @else
                         <td class="text-center">Tidak Aktif</td>

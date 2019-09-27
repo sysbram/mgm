@@ -47,6 +47,8 @@ class MemberSeeder extends Seeder
                     'email' => $faker->email,
                     'id_jenkel' => Rand(1,2),
                     'password' => Hash::make('Pass123'),
+                    'id_status' => 20,
+                    'status_hapus' => 'N',
                     'referral_code' => 'nama_'.RandomString(),
                 ]);
             }
@@ -59,6 +61,8 @@ class MemberSeeder extends Seeder
                     'email' => $faker->email,
                     'id_jenkel' => Rand(1,2),
                     'password' => Hash::make('Pass123'),
+                    'id_status' => 20,
+                    'status_hapus' => 'N',
                     'referral_code' => 'nama_'.RandomString(),
                 ]);
             }
