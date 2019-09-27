@@ -105,9 +105,8 @@
 
                 <select class="custom-select my-4" name="occupation">
                     <option selected>Ocupation</option>
-                    <option value="MANAGER">Manager</option>
-                    <option value="BRANCH MANAGER">Branch Manager</option>
-                    <option value="STAFF">Staff</option>
+                    <option value="1">Super Admin</option>
+                    <option value="2">Admin</option>
                 </select>
                 <button type="submit" class="btn btn-primary float-right">Agree to add</button>
             </form>
