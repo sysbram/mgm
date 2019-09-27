@@ -12,7 +12,7 @@ use Spatie\Activitylog\Models\Activity;
 class MemberController extends Controller
 {
     public function index(){
-        $member = member::orderBy('uid')->get();
+        $member = member::orderBy('uid')->paginate(10);
 
         return view('member/index',['member' => $member]);
     }
