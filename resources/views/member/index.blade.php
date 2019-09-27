@@ -5,6 +5,15 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-md-12">
+            @if (session('updated_success'))
+                <div class="alert alert-success">
+                    {{session('updated_success')}}
+                </div>
+            @elseif (session('deleted_success'))
+                <div class="alert alert-danger">
+                    {{session('deleted_success')}}
+                </div>
+            @endif
             <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">Member </h4>
