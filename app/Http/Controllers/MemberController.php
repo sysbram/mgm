@@ -12,7 +12,7 @@ use Spatie\Activitylog\Models\Activity;
 class MemberController extends Controller
 {
     public function index(){
-        $member = member::orderBy('uid')->get();
+        $member = member::orderBy('uid')->paginate(10);
 
         return view('member/index',['member' => $member]);
     }
@@ -42,13 +42,15 @@ class MemberController extends Controller
             'waktu_proses'  => $mytime->toDateTimeString(),
             'route'         => 'Update',
         ]);
-        return redirect('/member');
+        return redirect('/member')->with('updated_success', 'Member '.$request->nama.' has been Updated');
     }
 
     public function delete(Request $request, $uid){
         DB::table('member')->where('uid',$request->uid)->update([
             'status_hapus'  => 1,
         ]);
+
+        $member_data = DB::table('member')->where('uid',$uid)->first();
         
         $mytime = Carbon::now('Asia/Jakarta');
 
@@ -58,7 +60,7 @@ class MemberController extends Controller
             'waktu_proses'  => $mytime->toDateTimeString(),
             'route'         => 'Delete',
         ]);
-        return redirect('/member');
+        return redirect('/member')->with('deleted_success', 'Member '.$member_data->nama.' has been Deleted');
     }
 
     public function profil($uid){

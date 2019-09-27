@@ -15,9 +15,10 @@ class LogBOController extends Controller
         ->join('member', 'member.uid', 'users_log_activity.uid_member')
         ->select('users_log_activity.waktu_proses',
                 'users_log_activity.route',
+                'users_log_activity.id',
                 'users.name',
                 'member.nama'
-        )->get();      
+        )->paginate(50);      
 
         return view('/log_bo/index',['log_bo' => $log_bo]);
     }

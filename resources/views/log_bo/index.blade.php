@@ -19,10 +19,9 @@
                         <th>Keterangan</th>
                     </thead>
                     <tbody>
-                    <?php $no = 1; ?>
                     @foreach ($log_bo as $bo)
                         <tr>
-                            <td> {{ $no++.'.'}} </td>
+                            <td> {{ $bo->id }} </td>
                             <td> {{ $bo->waktu_proses }} </td>
                             <td> {{ 'Member ' }}
                                 <span class="font-weight-bold text-lg"> {{ $bo->nama }} </span>       
@@ -32,10 +31,11 @@
                                 <span class="text-primary"> {{ $bo->name }}
                             </td>
                         </tr>
-                    <?php $no++; ?>
                     @endforeach                   
                     </tbody>
                 </table>
+                <br/>
+                {{ $log_bo->links() }}
                 </div>
             </div>
             </div>

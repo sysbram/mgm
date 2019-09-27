@@ -5,6 +5,15 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-md-12">
+            @if (session('updated_success'))
+                <div class="alert alert-success">
+                    {{session('updated_success')}}
+                </div>
+            @elseif (session('deleted_success'))
+                <div class="alert alert-danger">
+                    {{session('deleted_success')}}
+                </div>
+            @endif
             <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">Member </h4>
@@ -16,13 +25,13 @@
                     <thead class=" text-primary text-center">
                     <th scope="col">#</th>
                     <th>NIK</th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>No Handphone</th>
+                    <th>Phone Number</th>
                     <!-- <th>Referral Code</th>
                     <th>Referral Code Parent</th> -->
 
-                    <th class="text-center">Status Hapus</th>
+                    <th class="text-center">Active Status</th>
                     <th>Last Login</th>
                     <th>Action</th>
                     </thead>
@@ -38,10 +47,10 @@
                         <!-- <td>{{ $data_member->referral_code }}</td>
                         <td>{{ $data_member->referral_code_parent }}</td> -->
 
-                        @if($data_member->status_hapus == 'N')
-                        <td class="text-center">Aktif</td>
+                        @if($data_member->status_hapus == "N")
+                        <td class="text-center text-success">Active</td>
                         @else
-                        <td class="text-center">Tidak Aktif</td>
+                        <td class="text-center text-danger">Not Active</td>
                         @endif
 
                         @if($data_member->last_login == 'NULL')
@@ -125,7 +134,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body text-danger">
-                                    Apakah anda yakin ingin menghapus member <span class="font-weight-bold" style="font-size:16px; color:black">{{ $data_member->nama }}</span>  ?
+                                    Are you sure to Delete member <span class="font-weight-bold" style="font-size:16px; color:black">{{ $data_member->nama }}</span>  ?
                                 </div>
                                 <form role="form" action="/member/delete/{{ $data_member->uid }}" method="post">
                                 {{ csrf_field() }}
@@ -141,6 +150,8 @@
                     @endforeach
                     </tbody>
                 </table>
+                <br/>
+                {{ $member->links() }}
                 </div>
             </div>
             </div>
