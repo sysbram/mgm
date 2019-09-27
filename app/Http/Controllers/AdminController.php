@@ -6,12 +6,27 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Model\Access_admin;
+Use App\Model\Menu;
 class AdminController extends Controller
 {
 
     public function profile(Request $request, $id){
         $admin = User::find($id);
-        return view('admin_profile/index',['admin'=>$admin]);
+        $menu = Menu::all();
+        return view('admin_profile/index',['admin'=>$admin, 'menu'=>$menu]);
+    }
+
+    public function access(Request $request, $id){
+        $menu = Menu::all();
+        $array = [];
+        foreach($menu as $loop){
+            for($j=1; $j<=3; $j++){
+                $test = 'check'.$loop->id.$j;
+                $array[]=$request->$test;
+            }
+        }
+        return $request->uid_menu;
     }
     
 

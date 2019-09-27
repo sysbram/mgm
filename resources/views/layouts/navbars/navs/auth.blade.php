@@ -53,10 +53,10 @@
             </p>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-            <a class="dropdown-item" href="">{{ __('Profile') }}</a>
-            <a class="dropdown-item" href="#">{{ __('Settings') }}</a>
+            <a class="dropdown-item" href="{{url('/')}}/{{Auth::user()->id}}/profile">{{ __('Profile') }}</a>
+            <a class="dropdown-item" href="{{url('/setting')}}">{{ __('Settings') }}</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Log out') }}</a>
+            <a class="dropdown-item" href="{{url('/logout')}}">{{ __('Log out') }}</a>
           </div>
         </li>
       </ul>

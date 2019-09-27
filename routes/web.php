@@ -1,13 +1,15 @@
 <?php
 
 
+// Settings Route ( Only for super admin )
+Route::get('/setting', 'SettingController@index');
+Route::post('/setting/create','SettingController@create');
+
+
 // Route Login
 Route::get('/login','AuthController@login');
 Route::post('/login','AuthController@postLogin')->name('login');
 Route::get('/logout', 'AuthController@logout');
-
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -29,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/back_office/{id}/delete', 'AdminController@delete');
     Route::get('/{id}/profile','AdminController@profile');
     Route::post('/{id}/edit','AdminEditController@edit');
+    Route::post('/{id}/profile/setting', 'AdminController@access');
     // Routing for load Page's part through ajax
     Route::get('/{id}/partAdminProfile', 'AdminEditController@profileLoad');
     Route::get('/{id}/partAdminProfileEdit', 'AdminEditController@profileEditLoad');

@@ -12,29 +12,35 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-            <a class="nav-link" href="{{ route('home') }}">
+            <a class="nav-link" href="">
                 <i class="material-icons">dashboard</i>
                 <p>{{ __('Dashboard') }}</p>
             </a>
             </li>
+            @if(Auth::user()->status_admin == 1)
             <li class="nav-item{{ $activePage == 'back_office' ? ' active' : '' }}">
             <a class="nav-link" href="/back_office">
                 <i class="material-icons">accessibility</i>
                 <p>{{ __('Back Office') }}</p>
             </a>
             </li>
+            @endif
+
             <li class="nav-item{{ $activePage == 'member' ? ' active' : '' }}">
             <a class="nav-link" href="/member">
                 <i class="material-icons">face</i>
                 <p>{{ __('Member') }}</p>
             </a>
             </li>
+            @if(Auth::user()->status_admin == 1)
             <li class="nav-item{{ $activePage == 'log_bo' ? ' active' : '' }}">
             <a class="nav-link" href="/log_bo">
                 <i class="material-icons">assignment</i>
                 <p>{{ __('Log Back Office') }}</p>
             </a>
             </li>
+            @endif
+
         </ul>
     </div>
 </div>

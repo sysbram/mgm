@@ -23,11 +23,17 @@ class AdminEditController extends Controller
         if($request->hasFile('file')){
             $request->file('file')->move('Images/admin/'.$admin->name,$request->file('file')->getClientOriginalName());
             $admin->foto = $request->file('file')->getClientOriginalName();
+            $admin->name = $request->name;
+            $admin->description = $request->description;
+            $admin->status_admin = $request->status_admin;
+            $admin->save();
+        }else{
+            $admin->name = $request->name;
+            $admin->description = $request->description;
+            $admin->status_admin = $request->status_admin;
+            $admin->save();
         }
-        $admin->name = $request->name;
-        $admin->description = $request->description;
-        $admin->occupation = $request->occupation;
-        $admin->save();
+        
         return redirect('/'.$admin->id.'/profile');
     }
 }

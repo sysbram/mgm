@@ -10,10 +10,10 @@
     </div>
 </label>
     <div class="card-body mb-4">
-    <select class="custom-select" name="occupation" @if($admin->occupation != 1) disabled @endif>
-        <option selected>Ocupation</option>
-        <option value="1">Super Admin</option>
-        <option value="2">Regullar Admin</option>
+    <select class="custom-select" name="status_admin" @if(Auth::user()->status_admin != 1) disabled @endif>
+        <option>Ocupation</option>
+        <option value="1" @if($admin->status_admin == 1) selected @endif> Super Admin </option>
+        <option value="2" @if($admin->status_admin == 2) selected @endif> Regullar Admin </option>
     </select>
     <h6 class="card-category text-gray"><input type="text" name="name" focused class="form-control text-center" id="formGroupExampleInput" placeholder="Name" value="{{$admin->name}}"></h6>
     <h4 class="card-title"></h4>

@@ -1,5 +1,4 @@
 @extends('layouts.app', ['activePage' => 'back_office', 'titlePage' => __('Member List')])
-
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -10,6 +9,8 @@
                         {{session('success')}}
                     </div>
                 @endif
+
+                @if(Auth::user()->status_admin==1)
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Member Table</h4>
@@ -42,7 +43,12 @@
                                             <td class="text-left">{{ $data->email }}</td>
                                             <td>{{ $data->created_at }}</td>
                                             <td>{{ $data->no_hp }}</td>
-                                            <td class="text-center text-success">@if($data->status_login == 1) Online @else Offline @endif</td>
+                                            @if($data->status_login == 1)
+                                                <td class="text-center text-success">Online</td>
+                                            @else
+                                                <td class="text-center text-danger">Ofline</td>
+                                            @endif
+
                                             <td class="text-center">{{$data->last_login}}</td>
                                             <td>
                                                 <a href="/back_office/{{$data->id}}/delete"><i class=" fa fa-trash"></i></a></a>
@@ -57,6 +63,24 @@
                             </div>
                         </div>
                     </div>
+                
+                
+                
+                @else
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Oooppss, We're sorry !!</h4>
+                            <p class="card-category"> You're not eligible for this menu ! </p>
+                        </div>
+                        <div class="card-body">
+                            You currently have no access for this section, contact Super admin to request permission
+                        </div>
+                    </div>
+                
+                
+                
+                
+                @endif
                 </div>
             </div>
         </div>
@@ -103,11 +127,10 @@
                     <input name="phone_number" type="number" class="form-control" id="formGroupExampleInput2" placeholder="Phone Number">
                 </div>
 
-                <select class="custom-select my-4" name="occupation">
+                <select class="custom-select my-4" name="status_admin">
                     <option selected>Ocupation</option>
-                    <option value="MANAGER">Manager</option>
-                    <option value="BRANCH MANAGER">Branch Manager</option>
-                    <option value="STAFF">Staff</option>
+                    <option value="1">Super Admin</option>
+                    <option value="2">Regular Admin</option>
                 </select>
                 <button type="submit" class="btn btn-primary float-right">Agree to add</button>
             </form>

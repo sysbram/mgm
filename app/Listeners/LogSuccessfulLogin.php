@@ -29,7 +29,6 @@ class LogSuccessfulLogin
     public function handle(Login $event)
     {       
         $mytime = Carbon::now('Asia/Jakarta');
-        
         $user = $event->user;
         $user->last_login = $mytime->toDateTimeString();
         $user->status_login = 1;
