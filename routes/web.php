@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/back_office/{id}/delete', 'AdminController@delete');
     Route::get('/{id}/profile','AdminController@profile');
     Route::post('/{id}/edit','AdminEditController@edit');
-    Route::post('/{id}/profile/setting', 'AdminController@access');
+    Route::put('/{id}/profile/setting', 'AdminController@access');
     // Routing for load Page's part through ajax
     Route::get('/{id}/partAdminProfile', 'AdminEditController@profileLoad');
     Route::get('/{id}/partAdminProfileEdit', 'AdminEditController@profileEditLoad');
@@ -234,8 +234,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-// Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
 // Route::group(['middleware' => 'auth'], function () {
 // 	Route::get('table-list', function () {

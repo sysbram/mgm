@@ -130,11 +130,7 @@
                 <select class="custom-select my-4" name="status_admin">
                     <option selected>Ocupation</option>
                     <option value="1">Super Admin</option>
-<<<<<<< HEAD
-                    <option value="2">Regular Admin</option>
-=======
                     <option value="2">Admin</option>
->>>>>>> 788e310bbd10bae2385df0eac687990739e7eecf
                 </select>
                 <button type="submit" class="btn btn-primary float-right">Agree to add</button>
             </form>

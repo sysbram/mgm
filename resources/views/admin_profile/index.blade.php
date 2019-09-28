@@ -21,7 +21,10 @@
                         <div class="card-body">
 
                             <form action="/{{$admin->id}}/profile/setting" method="post">
-                            {{csrf_field()}}
+                                
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+
                                 <table class="table">
                                     <thead class="thead-light">
                                         <tr>
@@ -37,23 +40,29 @@
                                             <td>
                                                 {{$menu_access->menu_name}}
                                             </td>
-                                            <input type="hidden" neme="uid_menu" value="{{$menu_access->uid}}">
+                                            <input type="hidden" name="user_id" value="{{$admin->id}}">
                                             <td>
                                                 <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="check{{$menu_access->id}}1" value="1" class="custom-control-input" id={{$menu_access->id}}"customSwitch1">
-                                                <label class="custom-control-label" for={{$menu_access->id}}"customSwitch1"></label>
+                                                    <input type="checkbox" name="{{'read'.$menu_access->id}}" value="1" class="custom-control-input" id={{$menu_access->id}}"customSwitch1" 
+                                                        <?= ($menu_access->read == 1 ? 'checked' : '');?>>
+
+                                                    <label class="custom-control-label" for={{$menu_access->id}}"customSwitch1"></label>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="check{{$menu_access->id}}2" value="1" class="custom-control-input" id={{$menu_access->id}}"customSwitch2">
-                                                <label class="custom-control-label" for={{$menu_access->id}}"customSwitch2"></label>
+                                                    <input type="checkbox" name="{{'edit'.$menu_access->id}}" value="1" class="custom-control-input" id={{$menu_access->id}}"customSwitch2" 
+                                                    <?= ($menu_access->edit == 1 ? 'checked' : '');?>>
+
+                                                    <label class="custom-control-label" for={{$menu_access->id}}"customSwitch2"></label>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="check{{$menu_access->id}}3" value="1" class="custom-control-input" id={{$menu_access->id}}"customSwitch3">
-                                                <label class="custom-control-label" for={{$menu_access->id}}"customSwitch3"></label>
+                                                    <input type="checkbox" name="{{'delete'.$menu_access->id}}" value="1" class="custom-control-input" id={{$menu_access->id}}"customSwitch3"
+                                                    <?= ($menu_access->delete == 1 ? 'checked' : '');?>>
+
+                                                    <label class="custom-control-label" for={{$menu_access->id}}"customSwitch3"></label>
                                                 </div>
                                             </td>
                                         </tr>
