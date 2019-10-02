@@ -16,7 +16,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('back_office');
+            return redirect()->intended('dashboard');
         }
     }
 

@@ -10,7 +10,7 @@
                             <div class="card-category">This will show on menu navigation</div>
                         </div>
                         <div class="card-body">
-                            <form action="/setting/create" method="post">
+                            <form action="/setting/create_tool" method="post">
                             {{csrf_field()}}
                                 <div class="form-group">
                                     <input name="menu" type="text" class="form-control" placeholder="Tools name">
@@ -23,11 +23,24 @@
                             <div class="form-group mt-4">
                             <ul class="list-group">
                             <h4 class="card-title">Tools available</h4>
-                            <li class="list-group-item">
-                               @foreach($menu as $tool)
-                                {{$tool->menu_name}},
-                               @endforeach
-                            </li> 
+                            <div class="table-responsive table-hover">
+                                <table class="table">
+                                    <thead class="text-primary text-center">
+                                        <tr>
+                                            <th>Tool Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($menu as $key)
+                                        <tr>
+                                            <td>{{$key->menu_name}}</td>
+                                            <td style="text-align:center;"><a href="/{{$key->id}}/setting/deleting_menu"><i class=" fa fa-trash"></i></a></a></td>
+                                        </td>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             </ul>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ class AdminEditController extends Controller
     public function edit(Request $request, $id){
         $admin = User::find($id);
         if($request->hasFile('file')){
-            $request->file('file')->move('Images/admin/'.$admin->name,$request->file('file')->getClientOriginalName());
+            $request->file('file')->move('Images/admin/'.$admin->uid,$request->file('file')->getClientOriginalName());
             $admin->foto = $request->file('file')->getClientOriginalName();
             $admin->name = $request->name;
             $admin->description = $request->description;

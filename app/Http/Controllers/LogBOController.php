@@ -18,7 +18,7 @@ class LogBOController extends Controller
                 'users_log_activity.id',
                 'users.name',
                 'member.nama'
-        )->paginate(50);      
+        )->paginate(2);      
 
         return view('/log_bo/index',['log_bo' => $log_bo]);
     }

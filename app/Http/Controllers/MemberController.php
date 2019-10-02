@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Spatie\Activitylog\Models\Activity;
+use App\Model\Access_admin;
+use App\Model\Member_verify;
 
 class MemberController extends Controller
 {
     public function index(){
         $member = member::orderBy('uid')->paginate(10);
-
-        return view('member/index',['member' => $member]);
+        $access = Access_admin::where('user_id',Auth::user()->id)->where('menu_id',3)->get();
+        return view('member/index',['member' => $member, 'access' => $access]);
     }
 
     public function edit($uid){
@@ -100,5 +102,19 @@ class MemberController extends Controller
             'member_grandchild' => $member_grandchild,
             'link_back'         => $link_back,          
         ]);
-    }   
+    }
+    
+    public function review(Request $request, $uid){
+        $member = Member::where('uid', $uid)->get();
+        $member_uid = $member[0]['uid'];
+        $verify = Member_verify::where('member_uid', $member_uid)->get();
+        return view('member/review', ['member'=>$member, 'verify' => $verify]);
+    }
+
+    public function decline(Request $request, $id){
+        $verify = Member_verify::find($id);
+        $verify->verify_info = $request->verify_info;
+        $verify->save();
+        return 'success decline';
+    }
 }

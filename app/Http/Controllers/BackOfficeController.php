@@ -6,32 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use \App\User;
+use \App\Model\Access_admin;
+use \App\Model\Menu;
+use App\Model\Member;
 
 class BackOfficeController extends Controller
 {
     public function index(){
 
-        $admin = User::all();
-        return view('back_office/index', ['admin' => $admin]);
+        $member = Member::whereRaw('id_status <= 15')->get();
+        return view('back_office/index', compact('member'));
     }
-
-    // public function update(Request $request){
-    //     DB::table('users')->where('id',$request->id)->update([
-    //         'name'          => $request->name,
-    //         'email'         => $request->email,
-    //         'no_handphone'  => $request->no_handphone,
-    //         'status_hapus'  => $request->status_hapus,
-    //     ]);   
-
-    //     return redirect('/back_office');
-    // }
-
-    // public function delete(Request $request){
-    //     DB::table('users')->where('id',$request->id)->update([
-    //         'status_hapus'  => 1,
-    //     ]);
-        
-    //     return redirect('/back_office');
-    // }
 
 }

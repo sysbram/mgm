@@ -7,6 +7,13 @@
 body{overflow-x: hidden;}
 .primary-bg{background: #DC143C;}
 
+/* When fixed and Absolute */
+.right-0{right: 0;}
+.right-10{right: 10px;}
+.left-0{left: 0;}
+
+.eye{color: red;}
+
 
 
 /*Height*/
@@ -109,4 +116,13 @@ body{overflow-x: hidden;}
     .normal{font-weight: normal;}
     
 /* Cursor */
-    .pointer{cursor: pointer;}
+	.pointer{cursor: pointer;}
+
+/* Hover */
+	.hover-op-5:hover{opacity: 0.5;}
+	
+
+
+
+/* inaddition utility above */
+	.profile{line-height: 100px;}

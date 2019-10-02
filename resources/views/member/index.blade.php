@@ -33,7 +33,10 @@
 
                     <th class="text-center">Active Status</th>
                     <th>Last Login</th>
+
+                    
                     <th>Action</th>
+                    
                     </thead>
                     <tbody>
                     <?php $no = 1; ?>
@@ -47,10 +50,17 @@
                         <!-- <td>{{ $data_member->referral_code }}</td>
                         <td>{{ $data_member->referral_code_parent }}</td> -->
 
-                        @if($data_member->status_hapus == "N")
-                        <td class="text-center text-success">Active</td>
-                        @else
-                        <td class="text-center text-danger">Not Active</td>
+                        @if($data_member->status_hapus != 'Y')
+                            @if($data_member->id_status == 1)
+                            <td class="text-warning text-center">Registration</td>
+                            @elseif($data_member->id_status == 5)
+                            <td class="text-warning text-center">Email Activation</td>
+                            @elseif($data_member->id_status == 10)
+                            <td class="text-warning text-center">ID Verification</td>
+                            @elseif($data_member->id_status == 15 || $data_member->id_status == 20)
+                            <td class="text-success text-center">Active</td>
+                            @endif
+                            
                         @endif
 
                         @if($data_member->last_login == 'NULL')
@@ -59,15 +69,23 @@
                         <td>{{ $data_member->last_login }}</td>
                         @endif
                         <td>
+                            @if($access[0]['read'] == 1)
                             <a href="/member/profil/{{ $data_member->uid }}"><i class=" fa fa-eye"></i></a>
+                            @endif  
+                                                     
 
+                            @if($access[0]['edit'] == 1)
                             <a href="/member/edit/{{ $data_member->uid }}" data-toggle="modal" data-target="#modalUpdate{{ $data_member->uid}}" id="modalUpdate">
                                 <i class=" fa fa-edit"></i>
                             </a>
+                            @endif  
+                            
 
+                            @if($access[0]['delete'] == 1)
                             <a href="/member/delete/{{ $data_member->uid }}" data-toggle="modal" data-target="#modalDelete{{ $data_member->uid }}" id="modalDelete">
                                 <i class=" fa fa-trash"></i>
                             </a>
+                            @endif  
                         </td>
                     </tr>
 
