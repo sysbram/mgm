@@ -9,3 +9,9 @@ After import database, please kindly login with
 - 12345678
 
 
+inadditional method :
+- You can use table migration instead, but make sure all data will not be crashed.
+
+
+
+
