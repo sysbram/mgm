@@ -1,12 +1,18 @@
 <?php
 
-
+// Route root
+Route::get('/')->middleware('auth');
 
 // Settings Route ( Only for super admin )
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting/create_tool','SettingController@create');
 Route::get('/{id}/setting/deleting_menu', 'SettingController@deleting_menu');
 Route::post('/{id}/setting/access','SettingController@access');
+
+// Route for tool activation
+Route::get('/setting/dashboardTool', 'SettingController@dashboard');
+Route::get('/setting/backOfficeTool', 'SettingController@backoffice');
+Route::get('/setting/memberTool', 'SettingController@membertool');
 
 
 

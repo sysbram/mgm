@@ -12,10 +12,9 @@ use \App\Model\Menu;
 class DashboardController extends Controller
 {
     public function index(){
-
         $admin = User::all();
-        $access = Access_admin::where('id',Auth::user()->id)->get();
-        return view('dashboard/index', ['admin' => $admin]);
+        $allow = Access_admin::where('user_id',Auth::user()->id)->get();
+        return view('dashboard/index', ['admin' => $admin, 'allow'=>$allow]);
     }
 
 }

@@ -1,17 +1,22 @@
 # mgm
 
-Import database from folder DB_import_tmp in order to have an access as superadmin,
-We haven't been ready for super admin register page
+Please do migration !!
+-- php artisan migrate
 
-After import database, please kindly login with
+When the migration is done, do these following scripts on your terminal, in order to create new super admin
 
-- admin@mgm.id
-- 12345678
+- Make sure your table is supported by UUID function, you can see in our slack about the gen_uuid function, and confirm
+  to me if you don't know how to do it. after this, follow the intructions bellow : 
 
+- php artisan tinker
+- $user = new App\User;
+- $user->name = '....'
+- $user->email = '....'
+- $user->password = bcrypt('....')
+- $user->status_admin = 1
+- $user->save()
 
-inadditional method :
-- You can use table migration instead, but make sure all data will not be crashed.
-
+then login with the new super admin you have registred with Artisan Tinker.
 
 
 

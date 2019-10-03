@@ -14,19 +14,21 @@ class SettingController extends Controller
 {
     public function index(){
         $menu = Menu::all();
-        return view('settings/index',compact('menu'));
+        $allow = Access_admin::where('id',Auth::user()->id)->get();
+        return view('settings/index',['menu'=>$menu, 'allow'=>$allow]);
     }
 
     public function create(Request $request){
         Menu::create([
-            'menu_name' => $request->menu,
+            'id' => $request->menu_id,
+            'menu_name' => $request->menu_name,
         ]);
         $user = User::all();
         foreach($user as $loop){
             if($loop->status_admin !=1){
                 Access_admin::create([
                     'user_id' => $loop->id,
-                    'menu_id' => Menu::max('id'),
+                    'menu_id' => $request->menu_id,
                 ]);
             }
         }
@@ -63,13 +65,21 @@ class SettingController extends Controller
                         }else{
                             $access_id = Access_admin::where('user_id',$user_model->id)->where('menu_id',$menu_model[$j]['id'])->get();
                             $find_id = Access_admin::find($access_id[0]['id']);
-                            // if($find_id['menu_id']==$menu_model[$j]['id']){
                                 for($k=0; $k<count($input_name); $k++){
                                     $field_name = $input_name[$k];
                                     $find_id->$field_name = $access_value[$j][$k];
                                     $find_id->save();
+                                    
+                                    // Check if Edit, Delete and Create are allowed but Read is not allowed
+                                    // This will automatically give integer value (1) to field Read in Access_admins table
+                                    if($k<count($input_name)){
+                                        $check_tmp = $input_name[$k];
+                                        if($find_id->$check_tmp == 1 && $find_id->read !=1){
+                                            $find_id->read = 1;
+                                            $find_id->save();
+                                        }
+                                    }
                                 }
-                            // }
                         }
                     }
                 }
@@ -80,5 +90,22 @@ class SettingController extends Controller
         
 
         
+    }
+
+
+
+
+
+
+    // belongs to tool information
+
+    public function dashboard(){
+        return view('part_page/DashboardInfoTool');
+    }
+    public function backoffice(){
+        return view('part_page/backOfficeInfoTool');
+    }
+    public function membertool(){
+        return view('part_page/memberInfoTool');
     }
 }

@@ -1,3 +1,25 @@
+<!-- Checking Accessibility over here -->
+    <?php
+	if(Auth::user()){
+        $admin_status = Auth::user()->status_admin;
+	}
+        $data = ['read','edit','delete','create'];
+        $check = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        for($i=0; $i<count($allow); $i++){
+            for($j=0; $j<count($data); $j++){
+                for($k=0; $k<count($check); $k++){
+                    if($allow[$i]['menu_id']==$k+1){
+                        if($allow[$i][$data[$j]]==1){
+                            $check[$k][$j] = 1;
+                        }else{
+                            $check[$k][$j] = 0;
+                        }
+                    }continue;
+                }
+            }
+        }
+    ?>
+    <!-- End Checking each iteration -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>

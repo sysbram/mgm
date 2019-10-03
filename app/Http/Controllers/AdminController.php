@@ -17,6 +17,7 @@ class AdminController extends Controller
     public function profile(Request $request, $id){
         $admin = User::find($id);
         $menu  = Menu::all();
+        $allow = Access_admin::where('user_id',Auth::user()->id)->get();
         $access = [];
         $activities = [];
         $log_bo = LogBO::
@@ -39,7 +40,7 @@ class AdminController extends Controller
         for($i=0; $i<count($menu); $i++){
             $access[] = Access_admin::where('user_id',$admin->id)->where('menu_id',$menu[$i]['id'])->get();
         }
-        return view('admin_profile/index',['admin'=>$admin, 'menu'=>$menu, 'access'=>$access, 'activities'=>$activities]);
+        return view('admin_profile/index',['admin'=>$admin, 'menu'=>$menu, 'access'=>$access, 'activities'=>$activities, 'allow'=>$allow]);
 
     }
     

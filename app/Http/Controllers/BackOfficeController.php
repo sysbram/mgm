@@ -15,7 +15,8 @@ class BackOfficeController extends Controller
     public function index(){
 
         $member = Member::whereRaw('id_status <= 15')->get();
-        return view('back_office/index', compact('member'));
+        $allow = Access_admin::where('user_id',Auth::user()->id)->get();
+        return view('back_office/index', ['member'=>$member, 'allow'=>$allow]);
     }
 
 }

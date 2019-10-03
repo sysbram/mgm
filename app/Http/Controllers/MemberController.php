@@ -15,8 +15,9 @@ class MemberController extends Controller
 {
     public function index(){
         $member = member::orderBy('uid')->paginate(10);
+        $allow = Access_admin::where('user_id',Auth::user()->id)->get();
         $access = Access_admin::where('user_id',Auth::user()->id)->where('menu_id',3)->get();
-        return view('member/index',['member' => $member, 'access' => $access]);
+        return view('member/index',['member' => $member, 'access' => $access, 'allow'=>$allow]);
     }
 
     public function edit($uid){

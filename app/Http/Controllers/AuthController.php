@@ -9,7 +9,8 @@ use App\User;
 class AuthController extends Controller
 {
     public function login(){
-        return view('auth/login');
+        $allow = [];
+        return view('auth/login', compact('allow'));
     }
     public function postLogin(Request $request){
         $credentials = $request->only('email', 'password');
